@@ -1,5 +1,114 @@
-.navbar{
-    list-style: none;
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Besley:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #121213;
+    color: white;
+}
+
+.textos{
+    font-family: 'JetBrains Mono', monospace; 
+}
+
+.titulos{
+    font-family: "Besley", serif;
+    font-size: 30px;
+}
+
+.header {
+    height: 12vh;
+    border-bottom: 2px solid white;
+}
+
+#mainPage{
+    height: 100vh;
+    background-image: url('../imgs/nkgg.png');
+    background-size: cover;
+    opacity: 100
+}
+
+#mainPage::before { /* Criando uma camada por cima da foto para deixar mais escuro */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+#mainPage .container {
+    position: relative;
+    z-index: 2; /* DEFININDO A CAMADA DO CONTEUDO */
+}
+
+
+.header .container {
     display: flex;
+    width: 90%;
+    margin: auto;
     justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+#pages {
+    display: flex;
+    gap: 100px;
+    list-style: none;
+}
+
+#pages li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    background-color: #D9D9D9;
+    border-radius: 10px;
+    color: black;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #259ba8;
+}
+
+.banner{
+    display: flex;
+    width:100%;
+    height: 88vh;
+    align-items: center;
+
+}
+
+.banner .container{
+    
 }
