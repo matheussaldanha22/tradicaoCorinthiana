@@ -15,17 +15,27 @@ body {
 .textos {
     font-family: 'JetBrains Mono', monospace; 
     font-size: 18px;
+    color:white; text-shadow: black 0.1em 0.1em 0.2em;
 }
 
 .titulos {
     font-family: "Besley", serif;
     font-size: 35px;
     font-weight: 500;
+    color:white; text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.red{
+    color: #FF1109;
+}
+
+.subtitulo{
+    color:white; text-shadow: black 0.1em 0.1em 0.2em;
 }
 
 .header {
     height: 12vh;
-    border-bottom: 1px solid white;
+    border-bottom: 1px solid ;
     position: relative;
     z-index: 3;
 }
@@ -43,7 +53,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 
@@ -62,7 +72,7 @@ body {
 }
 
 .logo img {
-    width: 50px;
+    width: 110px;
     height: auto;
 }
 
@@ -83,7 +93,7 @@ nav {
 }
 
 #secoes li a:hover {
-    color: rgb(187, 185, 185);
+    color: #FF1109;
 }
 
 .buttons {
@@ -94,19 +104,18 @@ nav {
 .btn {
     padding: 8px 30px;
     border: none;
-    background-color: #d9d9d9;
+    background-color: white;
     border-radius: 10px;
     color: black;
     cursor: pointer;
     font-weight: bold;
-    opacity: 0.7;
     transition: transform 0.3s;
 }
 
 .btn:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
-    background-color: #a7a7a7;
+    background-color: #FF1109;
 }
 
 .banner {
@@ -121,12 +130,13 @@ nav {
     width: 600px;
 }
 
+/* page historia */
 #historiaPage {
     display: flex;
     justify-content: center;
     align-items:center;
     height: 100vh;
-    background-image: url('../imgs/aa.png');
+    background-image: url('../imgs/bkgHistoria.png');
     background-size: cover;
     color: white;
     text-align: center;
@@ -139,7 +149,6 @@ nav {
 
 #historiaPage .red {
     font-size: 25px;
-    color: #FF1109;
 }
 
 #historiaPage .subtitulo {
@@ -151,4 +160,47 @@ nav {
     font-size: 18px;
     line-height: 1.6;
     margin-top: 20px;
+}
+
+/* page torcida */
+#torcidaPage{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 0 20px;
+    background-color: #181818;
+}
+
+#torcidaPage .subtitulo {
+    font-size: 40px;
+    margin-top: 5px;
+}
+
+#torcidaPage .red {
+    font-size: 25px;
+}
+
+#torcidaPage .container {
+    display: flex;
+    margin-top: 50px;
+    max-width: 80%;
+}
+
+#torcidaPage .descricao{
+    text-align: justify;
+    margin-left: 50px;
+}
+
+#torcidaPage img{
+    border-radius: 30px;
+    box-shadow: 20px 20px rgba(0, 0, 0, 0.5);  
+      
+}
+
+#torcidaPage button{
+    margin-top: 40px;
+    width: 200px;
 }
