@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@100;200;300;400;500;600;700;800;900&family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Besley:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Besley:ital,wght@0,400..900;1,400..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 * {
     margin: 0;
@@ -13,43 +12,45 @@ body {
     color: white;
 }
 
-.textos{
+.textos {
     font-family: 'JetBrains Mono', monospace; 
+    font-size: 18px;
 }
 
-.titulos{
+.titulos {
     font-family: "Besley", serif;
-    font-size: 30px;
+    font-size: 35px;
+    font-weight: 500;
 }
 
 .header {
     height: 12vh;
-    border-bottom: 2px solid white;
+    border-bottom: 1px solid white;
+    position: relative;
+    z-index: 3;
 }
 
-#mainPage{
+#mainPage {
     height: 100vh;
-    background-image: url('../imgs/nkgg.png');
+    background-image: url('../imgs/bkgMain.png');
     background-size: cover;
-    opacity: 100
 }
 
-#mainPage::before { /* Criando uma camada por cima da foto para deixar mais escuro */
+#mainPage::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 1;
 }
 
 #mainPage .container {
     position: relative;
-    z-index: 2; /* DEFININDO A CAMADA DO CONTEUDO */
+    z-index: 2;
 }
-
 
 .header .container {
     display: flex;
@@ -70,45 +71,84 @@ nav {
     justify-content: center;
 }
 
-#pages {
+#secoes {
     display: flex;
     gap: 100px;
     list-style: none;
 }
 
-#pages li a {
+#secoes li a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
+}
+
+#secoes li a:hover {
+    color: rgb(187, 185, 185);
 }
 
 .buttons {
     display: flex;
-    gap: 10px;
+    gap: 30px;
 }
 
 .btn {
-    padding: 8px 16px;
+    padding: 8px 30px;
     border: none;
-    background-color: #D9D9D9;
+    background-color: #d9d9d9;
     border-radius: 10px;
     color: black;
     cursor: pointer;
     font-weight: bold;
+    opacity: 0.7;
+    transition: transform 0.3s;
 }
 
 .btn:hover {
-    background-color: #259ba8;
+    transform: scale(1.1);
+    transition: transform 0.3s;
+    background-color: #a7a7a7;
 }
 
-.banner{
+.banner {
     display: flex;
-    width:100%;
+    width: 100%;
     height: 88vh;
     align-items: center;
-
 }
 
-.banner .container{
-    
+.banner .container {
+    margin-left: 40px;
+    width: 600px;
+}
+
+#historiaPage {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 100vh;
+    background-image: url('../imgs/aa.png');
+    background-size: cover;
+    color: white;
+    text-align: center;
+    padding: 0 20px;
+}
+
+#historiaPage .container {
+    max-width: 70%;
+}
+
+#historiaPage .red {
+    font-size: 25px;
+    color: #FF1109;
+}
+
+#historiaPage .subtitulo {
+    font-size: 40px;
+    margin-top: 5px;
+}
+
+#historiaPage .descricao {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-top: 20px;
 }
