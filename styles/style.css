@@ -15,35 +15,43 @@ body {
 .textos {
     font-family: 'JetBrains Mono', monospace; 
     font-size: 18px;
-    color:white; text-shadow: black 0.1em 0.1em 0.2em;
+    color: white; 
+    text-shadow: black 0.1em 0.1em 0.2em;
 }
 
 .titulos {
     font-family: "Besley", serif;
     font-size: 35px;
     font-weight: 500;
-    color:white; text-shadow: black 0.1em 0.1em 0.2em;
+    color: white; 
+    text-shadow: black 0.1em 0.1em 0.2em;
 }
 
-.red{
+.red {
     color: #FF1109;
 }
 
-.subtitulo{
-    color:white; text-shadow: black 0.1em 0.1em 0.2em;
+.subtitulo {
+    color: white; 
+    text-shadow: black 0.1em 0.1em 0.2em;
 }
 
 .header {
     height: 12vh;
-    border-bottom: 1px solid ;
+    border-bottom: 1px solid;
     position: relative;
     z-index: 3;
 }
 
+
+/* MAIN PAGE */
 #mainPage {
-    height: 100vh;
-    background-image: url('../imgs/bkgMain.png');
-    background-size: cover;
+    height: 110vh;
+    background-image: url('../imgs/arana.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+
 }
 
 #mainPage::before {
@@ -52,7 +60,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 110vh;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
@@ -130,21 +138,37 @@ nav {
     width: 600px;
 }
 
-/* page historia */
+/* PAGE HISTORIA */
 #historiaPage {
     display: flex;
     justify-content: center;
-    align-items:center;
-    height: 100vh;
-    background-image: url('../imgs/bkgHistoria.png');
-    background-size: cover;
+    align-items: center;
+    height: 110vh;
+    background-image: url('../imgs/dragao\ SCCP.png');
+    background-size: 83%;
+    background-position: 5vw;
+    background-repeat: no-repeat;
     color: white;
     text-align: center;
     padding: 0 20px;
+    position: relative; 
+}
+
+#historiaPage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 #historiaPage .container {
     max-width: 70%;
+    position: relative; 
+    z-index: 2; 
 }
 
 #historiaPage .red {
@@ -162,16 +186,24 @@ nav {
     margin-top: 20px;
 }
 
-/* page torcida */
-#torcidaPage{
+/* TORCIDA PAGE */
+#torcidaPage {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 110vh;
     text-align: center;
     padding: 0 20px;
-    background-color: #181818;
+    position: relative; 
+}
+
+
+
+#torcidaPage .container {
+    display: flex;
+    margin-top: 50px;
+    max-width: 80%;
 }
 
 #torcidaPage .subtitulo {
@@ -183,24 +215,42 @@ nav {
     font-size: 25px;
 }
 
-#torcidaPage .container {
-    display: flex;
-    margin-top: 50px;
-    max-width: 80%;
-}
-
-#torcidaPage .descricao{
+#torcidaPage .descricao {
     text-align: justify;
     margin-left: 50px;
 }
 
-#torcidaPage img{
+#torcidaPage img {
     border-radius: 30px;
-    box-shadow: 20px 20px rgba(0, 0, 0, 0.5);  
-      
+    box-shadow: 20px 30px rgba(0, 0, 0, 0.5);  
 }
 
-#torcidaPage button{
+#torcidaPage button {
     margin-top: 40px;
     width: 200px;
+}
+
+/* PAGE DEMOCRACIA */
+
+#democraciaPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 110vh;
+    background-image: url('../imgs/democracia2.jpeg');
+    background-size: cover;
+    text-align: center;
+    padding: 0 20px;
+    position: relative; 
+}
+
+#democraciaPage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
