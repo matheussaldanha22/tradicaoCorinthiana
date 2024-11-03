@@ -86,20 +86,80 @@
             </p>
             <div class="valoresImg">
                 <div class="valor">
-                    <img src="imgs/desigualdadeImg.png" alt="" width="150px">
-                    
+                        <img src="imgs/desigualdadeImg.png" class="imgFlips" alt="" width="150px">
                 </div>
 
                 <div class="valor">
-                    <img src="imgs/Design sem nome (6).png" alt="" width="300px">
+                    <img src="imgs/Design sem nome (6).png" class="imgFlips" alt="" width="300px">
                 </div>
 
                 <div class="valor">
-                    <img src="imgs/educacaoImg.png" alt="" width="140px">
+                    <img src="imgs/educacaoImg.png" class="imgFlips" alt="" width="140px">
                 </div>
             </div>
         </div>
      </section>
 
+
+     <!-- SEÇÃO SOCIEDADE -->
+     <section id="sociedadePage">
+        <div class="container">
+            <span class="red titulos">A sociedade</span><br>
+            <span class="subtitulo">"MUITO MAIS QUE SÓ FUTEBOL"</span>
+            <p class="descricao textos">
+                O projeto revela como o Corinthians representa “mais que só futebol” ao impactar positivamente a sociedade. Alinhado aos Objetivos de Desenvolvimento Sustentável (ODS), o clube e sua torcida promovem valores de inclusão, cidadania e transformação social que fortalecem o espírito comunitário corinthiano. 
+            </p>
+            <div class="valoresCards">
+                <div class="flip card">
+                    <div class="face front">
+                        <img src="imgs/desigualdadeImg.png" class="imgFlips" alt="" width="150px">
+                    </div>
+
+                    <div class="face back">
+                        aaa
+                    </div>
+                </div>
+
+                <div class="flip card">
+                    <div class="face front">
+                        <img src="imgs/pobrezaImg.png" class="imgFlips" alt="" width="300px">
+                    </div>
+
+                    <div class="face back">
+                        aaa
+                    </div>
+                </div>
+
+                <div class="flip card">
+                    <div class="face front">
+                        <img src="imgs/educacaoImg.png" class="imgFlips" alt="" width="140px">
+                    </div>
+
+                    <div class="face back">
+                        aaa
+                    </div>
+                </div>
+            </div>
+        </div>
+     </section>
+
+
+
+     <!-- SECTION SOBRE MIM-->
+     <section id="sobrePage">
+            
+     </section>
+
 </body>
 </html>
+
+<script>
+    const cards = document.querySelectorAll('.card'); 
+
+    cards.forEach(card => {
+            card.addEventListener("click", (e) => {
+            card.classList.toggle("flip"); 
+        });
+    });
+
+</script>
