@@ -43,14 +43,18 @@ body {
     z-index: 3;
 }
 
+.header .btn{
+    background-color: rgba(255, 255, 255, 0.658);
+}
+
 
 /* MAIN PAGE */
 #mainPage {
     height: 110vh;
-    background-image: url('../imgs/arana.jpg');
-    background-size: 100%;
+    background-image: url('../imgs/teste/img2.jpg');
+    background-size: 110%;
     background-repeat: no-repeat;
-
+    background-position-y: -100px;
 
 }
 
@@ -147,6 +151,7 @@ nav {
     background-image: url('../imgs/dragao\ SCCP.png');
     background-size: 83%;
     background-position: 5vw;
+    background-position-y: 50px;
     background-repeat: no-repeat;
     color: white;
     text-align: center;
@@ -161,7 +166,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
 
@@ -235,13 +240,15 @@ nav {
 #democraciaPage {
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 110vh;
     background-image: url('../imgs/democracia2.jpeg');
     background-size: cover;
+    background-position-y: 20px;
+    background-repeat: no-repeat;
     text-align: center;
     padding: 0 20px;
     position: relative; 
+
 }
 
 #democraciaPage::before {
@@ -251,6 +258,65 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(8, 8, 8, 0.7);
     z-index: 1;
 }
+
+#democraciaPage .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 70px;
+    max-width: 80%;
+    position: relative; 
+    z-index: 2; 
+}
+
+#democraciaPage .red {
+    font-size: 25px;
+}
+
+#democraciaPage .subtitulo {
+    font-size: 40px;
+    margin-top: 2px;
+}
+
+#democraciaPage .descricao {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-top: 20px;
+}
+
+.valoresImg{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    gap: 30px;
+}
+
+.valor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 30vw;
+    height: 40vh;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.192);
+    border-radius: 10px;
+}
+
+#democraciaPage img{
+    transition: transform 0.3s;
+}
+
+#democraciaPage img:hover{
+    transform: scale(1.2);
+    transition: transform 0.5s;
+}
+
+
+
+
+
