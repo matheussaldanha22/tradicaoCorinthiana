@@ -46,7 +46,7 @@ body {
 /* MAIN PAGE */
 #mainPage {
     height: 110vh;
-    background-image: url('../imgs/bkgMain.jpg');
+    background-image: url('../assets/imgs/bkgMain.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
     background-position-y: -50px;
@@ -158,7 +158,7 @@ nav {
     justify-content: center;
     align-items: center;
     height: 110vh;
-    background-image: url('../imgs/dragao\ SCCP.png');
+    background-image: url('../assets/imgs/dragao\ SCCP.png');
     background-size: 83%;
     background-position: 5vw;
     background-position-y: 50px;
@@ -254,7 +254,7 @@ nav {
     display: flex;
     justify-content: center;
     height: 110vh;
-    background-image: url('../imgs/democracia2.jpeg');
+    background-image: url('../assets/imgs/democracia2.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     text-align: center;
