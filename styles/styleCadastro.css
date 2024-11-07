@@ -6,5 +6,22 @@
     background-repeat: no-repeat;
     background-size: 100%;
     background-position-y: -100px;
-    background-position-x: 20vw ;
+    color: black;
+}
+
+.container{
+    display: flex;
+    border-radius: 10px;
+    margin-top: 10vh;
+    margin-left: 10vh;
+    height: 80vh;
+    width: 35vw;
+    box-shadow: 15px 10px rgba(0, 0, 0, 0.5);  
+    background-color:rgba(255, 255, 255, 0.822);
+    justify-content: center;
+}
+
+.textos{
+    color:black;
+    font-size: 40px;
 }
