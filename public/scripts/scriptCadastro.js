@@ -94,6 +94,7 @@ function cadastrar() {
           senhaServer: senhaVar
         }),
     })
+    
     alert('Cadastro realizado, redirecionando para login..')
     setTimeout(function () {
                     

@@ -8,6 +8,20 @@
     <link rel="stylesheet" href="styles/styleInst.css">
     <link rel="stylesheet" href="styles/styleCadastro.css">
     <link rel="stylesheet" href="styles/styleLogin.css">
+
+    <style>
+        .main .container{
+            height: 62vh;
+        }
+
+        .feedback{
+            color: black;
+            text-align: center;
+            font-size: 15px;
+            height: 100%;
+            text-shadow: none;
+        }
+    </style>
 </head>
 <body>
     
@@ -87,7 +101,7 @@
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
 
-                    spanFeedback.innerHTML=`<span style='color:green'>Login efetuado com sucesso</span>, redirecionando para Dashboard`
+                    spanFeedback.innerHTML=`<span style='color:green'>Login efetuado com sucesso</span>, redirecionando para <b>Dashboard<b>`
                     setTimeout(function () {
                         window.location.href = "dashboard/metricas.html";
                     }, 1000); // apenas para exibir o loading
