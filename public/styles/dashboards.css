@@ -148,205 +148,7 @@ body {
   overflow: auto;
 }
 
-.area-parametros-alerta {
-  /* border: 2px solid pink; */
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  margin: auto;
-  margin-top: 10px;
-  background-color: #212124;
-}
 
-.area-parametros-alerta .titulo-legenda {
-  color: white;
-  font-weight: 600;
-  width: fit-content;
-  margin: 10px 20px;
-}
-
-.parametros-alerta {
-  display: flex;
-  width: 100%;
-}
-
-.item-regua {
-  width: 20%;
-  text-align: center;
-  height: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-self: center;
-}
-
-.item-regua p {
-  margin: 0;
-  font-weight: 500;
-}
-
-.item-regua p:nth-child(2) {
-  font-weight: 800;
-}
-
-.perigo-frio {
-  background-color: #5c6bc0;
-}
-
-.perigo-quente {
-  background-color: #ff7043;
-}
-
-.alerta-frio {
-  background-color: #42a5f5;
-}
-
-.alerta-quente {
-  background-color: #ffee58;
-}
-
-.ideal {
-  background-color: #9ccc65;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  height: 450px;
-  width: 100%;
-  align-items: center;
-  color: white;
-}
-
-.card-aquario {
-  margin: 2%;
-  min-width: 40%;
-  max-width: 50%;
-  width: fit-content;
-  flex-wrap: wrap;
-  display: flex;
-  /* text-align: center; */
-  height: 180px;
-  /* justify-content: right; */
-  background-color: #212124;
-  font-size: 20px;
-}
-
-.card-aquario h1 {
-  width: fit-content;
-}
-
-.card-aquario p {
-  margin: 0;
-  font-size: 50px;
-  font-weight: lighter;
-  text-align: left;
-}
-
-.desc-aquario {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  width: 100%;
-}
-
-.desc-aquario .cor-alerta {
-  width: 30px;
-}
-
-.title-aquario {
-  width: 100%;
-}
-
-
-.cards h1 {
-  font-size: 22px;
-  border-bottom: solid white 1px;
-  text-align: left;
-  font-weight: lighter;
-  margin: 20px;
-}
-
-.temperatura,
-.umidade {
-  margin: 5px;
-  margin-left: 20px;
-  width: 75%;
-}
-
-.cor-alerta {
-  width: 13%;
-  height: 30%;
-  border-radius: 50%;
-  display: inline-block;
-}
-
-.btns-dash {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  flex-wrap: wrap;
-  padding: 0 30% 0 30%;
-}
-
-.graph {
-  width: 70%;
-  margin: auto;
-  padding-top: 10px;
-}
-
-.tituloGraficos {
-  color: rgb(216, 216, 216);
-  display: flex;
-  justify-content: center;
-}
-
-.btn-chart {
-  font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  border: 0;
-  font-weight: 600;
-  font-size: 18px;
-  padding: 10px 15px;
-  color: #e6005a;
-  background-color: white;
-  margin: 5px;
-  border-radius: 3px;
-  cursor: pointer
-}
-
-.btn-pink {
-  color: white;
-  background-color: #e6005a;
-}
-
-.btn-white {
-  color: #e6005a;
-  background-color: white;
-
-}
-
-.label-captura {
-  height: 80px;
-}
-
-.display-none {
-  display: none;
-}
-
-.display-flex {
-  display: flex;
-}
-
-.display-block {
-  display: block;
-}
-
-canvas {
-  width: 100% !important;
-  height: 100% !important;
-}
 
 /* PAGINA DOS GRÁFICOS 2023 */
 
@@ -508,4 +310,98 @@ canvas {
   color: white;
   transition: all 0.2s;
   border: solid 2px black ;
+}
+
+#resultado{
+  display: flex;
+  font-size: 30px;
+  text-align: center;
+  margin-top: 5vh;
+}
+
+#resultado .btn{
+  width: 15vw;
+}
+
+#resultado img{
+  width: 200px;
+  margin-top: 2vh;
+  border-radius: 5px;
+  border: solid 1px black
+}
+
+/* METRICAS */
+.metricas{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0px 30px;
+  flex-direction: column;
+}
+
+#userSpan{
+  color: rgb(228, 227, 227);
+  font-weight: 100;
+}
+
+#tituloMetrica{
+  font-size: 25px;
+}
+
+.kpis{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  
+  gap: 100px;
+}
+
+.kpiIndividual{
+  display: flex;
+  padding: 10px;
+  gap: 10px;
+  flex-direction: column;
+  margin-top: 2vh;
+  width: 25vw;
+  height: 22vh;
+  border: solid 2px black;
+  border-radius: 10px;
+  background-color: rgb(146, 146, 146);
+  box-shadow: 10px 10px rgba(0, 0, 0);  
+}
+
+.kpiIndividual .tituloKpi{
+  font-size: 15px;
+  font-weight: 800;
+  
+}
+
+.kpiIndividual .numKpi{
+  font-size: 40px;
+}
+
+.graficos{
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.graficos .titulos{
+  font-size: 20px;
+  width: 20vw;
+  text-align: center;
+}
+
+.grafico2{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.chartIdv{
+  width: 37vw;
+  margin-top: 5vh;
+  background-color: rgb(255, 255, 255);
+  border-radius: 20px;
 }

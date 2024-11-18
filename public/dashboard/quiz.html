@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tradição | Geral</title>
+    <title>Tradição | Quiz</title>
 
 
     <link rel="stylesheet" href="../styles/dashboards.css">
@@ -21,7 +21,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body>
 
     <div class="janela">
 
@@ -38,14 +38,14 @@
             </div>
 
             <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
+                <a href="./metricas.html">
+                    <h3>Métricas</h3>
                 </a>
             </div>
 
             <div class="btn-nav-white">
                 <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
+                    <h3>Histórias de Torcida</h3>
                 </a>
             </div>
 
@@ -57,7 +57,7 @@
 
         <div class="dash">
             <div class="titulos">
-                <span>Quiz Fiel</span>
+                <span id="tituloQuiz">titulo do quiz</span>
             </div>
             <div class="main">
                 <div class="container" id="quiz-container">
@@ -68,7 +68,7 @@
                     <div class="opcao" onclick="selecionarOpcao(3)">Alternativa 4</div>
                     <button class="btn" onclick="confirmarResposta()">Confirmar</button>
                 </div>
-                <div id="resultado" style="display: none; font-size: 24px; font-weight: bold; color: green;"></div>
+                <div id="resultado" style="display: none;"></div>
 
             </div>
 
@@ -77,6 +77,8 @@
 </body>
 
 <script>
+        b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
         const listaQuestoes = [
             { questao: "Em que ano o Corinthians foi fundado?", opcoes: ["1910", "1920", "1930", "1940"], respostaCorreta: 0 },
             { questao: "Qual é o estádio do Corinthians?", opcoes: ["Morumbi", "Maracanã", "Neo Química Arena", "Pacaembu"], respostaCorreta: 2 },
@@ -91,13 +93,15 @@
             { questao: "Em que ano o Corinthians foi campeão invicto da Libertadores?", opcoes: ["2000", "2012", "2010", "1999"], respostaCorreta: 1 },
             { questao: "Quem foi o treinador do Corinthians na conquista da Libertadores de 2012?", opcoes: ["Tite", "Luxemburgo", "Muricy", "Felipão"], respostaCorreta: 0 },
             { questao: "Qual destes jogadores nunca jogou no Corinthians?", opcoes: ["Neto", "Tevez", "Romário", "Ronaldo"], respostaCorreta: 2 },
-            { questao: "Quantas vezes o Corinthians foi campeão brasileiro até 2023?", opcoes: ["5", "7", "6", "8"], respostaCorreta: 3 },
+            { questao: "Quantas vezes o Corinthians foi campeão brasileiro até 2024?", opcoes: ["5", "7", "6", "8"], respostaCorreta: 1 },
             { questao: "Qual jogador argentino marcou história com a camisa 10 do Corinthians?", opcoes: ["Maradona", "Tevez", "Verón", "Sorín"], respostaCorreta: 1 }
         ];
 
         let questaoAtual = 0;
         let qtdAcertos = 0;
+        let qtdPontos = 0;
         let selectedOpcao = null;
+        tituloQuiz.innerHTML = `Quiz Timão ${questaoAtual+1}/${listaQuestoes.length}`
 
         function attQuestoes() {
             document.getElementById("questao").innerText = listaQuestoes[questaoAtual].questao;
@@ -124,42 +128,81 @@
             if (selectedOpcao === listaQuestoes[questaoAtual].respostaCorreta) {
                 qtdAcertos++;
             }
-            questaoAtual++;
-            if (questaoAtual < listaQuestoes.length) {
+
+            questaoAtual++; //passando para proxima questao
+            tituloQuiz.innerHTML = `Quiz Timão ${questaoAtual+1}/${listaQuestoes.length}`
+
+
+
+            if (questaoAtual < listaQuestoes.length) { //checando se há perguntas ainda, caso contrario exibe o resultado
                 attQuestoes();
             } else {
                 exibirResultado();
             }
         }
 
+
+        //FUNÇÃO PARA MANDAR PONTOS AO BACKEND
+        function cadastrarPontos(pontos) {
+        const idUsuario = sessionStorage.ID_USUARIO; 
+        sessionStorage.Pontos = pontos //ARMAZENANDO QTD DE PTS DO USUARIO NA SessionStorage
+
+        fetch("/quiz/cadastrarPontos", {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ pontos: pontos, idUsuario: idUsuario }),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+        console.log("QtdAcertos cadastrados com sucesso:", data);
+        })
+        .catch((error) => {
+        console.error("Erro ao cadastrar QtdAcertos:", error);
+        });
+    };
+
         function exibirResultado() {
-            document.getElementById("quiz-container").style.display = "none";
-            document.getElementById("resultado").innerText = `Você acertou ${qtdAcertos} de ${listaQuestoes.length} perguntas!`;
-            document.getElementById("resultado").style.display = "block";
+            document.getElementById("quiz-container").style.display = "none"; //some com conteudo do quiz
+
+            //modifica o conteudo do resultado e coloca ele como visivel
+            let msg = ''
+            let imgSrc = ''
+
+            if(qtdAcertos <=5){
+                msg = 'Foi muito mal, Nível: Pedro Raul!'
+                imgSrc='../assets/imgs/pedroRaul.jpg'
+            }else if(qtdAcertos <= 8){
+                msg = 'Foi razoável, Nível: Carrillo!'
+                imgSrc='../assets/imgs/carrillo.jpg'
+            }else if(qtdAcertos <= 11){
+                msg = 'Foi muito bem, Nível: Romero!'
+                imgSrc='../assets/imgs/romero.jpg'
+            }else if(qtdAcertos <= 14){
+                msg = 'Amassou!, Nível: Yuri Alberto!'
+                imgSrc='../assets/imgs/yuri.jpg'
+            }else if(qtdAcertos == 15){
+                msg = 'É o melhor de todos!, Nível: Garroo!'
+                imgSrc='../assets/imgs/garro.webp'
+            }
+
+            document.getElementById("resultado").innerHTML = `Você acertou ${qtdAcertos} de ${listaQuestoes.length} perguntas!<br>
+            <img src= "${imgSrc}"><br>
+            ${msg}<br>
+            <button class="btn" onclick="window.location.reload()">Refazer quiz</button>`;
+            document.getElementById("resultado").style.display = "block"; 
+
+            cadastrarPontos(qtdAcertos)
+            tituloQuiz.innerHTML = `Quiz Timão`
         }
 
-        attQuestoes();
+        attQuestoes(); //atualizando questao sempre que é respondido alguma
 
 
 
-         // function exibirAquarios() {
-    //     JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-    //         document.getElementById("cardAquarios").innerHTML += `
-    //                 <div class="card-aquario">
-    //                     <div class="title-aquario">
-    //                         <h1>${item.descricao}</h1>
-    //                     </div>
-    //                     <div class="desc-aquario">
-    //                     <div class="temperatura">
-    //                         <p id="temp_aquario_${item.id}">-°C</p>
-    //                     </div>
-    //                     <div class="cor-alerta" id="card_${item.id}"></div>
-    //                 </div>
-    //                 </div>
-    //                 `
-    //     });
-    // }
-    </script>
+    
+</script>
 
    
 
