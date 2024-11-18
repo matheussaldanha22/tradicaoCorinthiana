@@ -1,0 +1,11 @@
+.main .container{
+    height: 62vh;
+}
+
+.feedback{
+    color: black;
+    text-align: center;
+    font-size: 15px;
+    height: 100%;
+    text-shadow: none;
+}

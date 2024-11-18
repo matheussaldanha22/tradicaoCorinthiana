@@ -7,6 +7,7 @@
     <link rel="icon" href="https://assets.coingecko.com/coins/images/17998/large/XMRckIDaOnwFhFWEkrOHxrV1JhkI1JM5X4Y6LI5v.png?1696517515">
     <link rel="stylesheet" href="styles/styleInst.css">
     <link rel="stylesheet" href="styles/styleCadastro.css">
+    <link rel="stylesheet" href="styles/styleLogin.css">
 </head>
 <body>
     
@@ -19,7 +20,7 @@
                 </div>
 
                 <div class="login">
-                    <a href="cadastro.html"><img src="assets/imgs/perfil.png"  alt=""></a>
+                    <a href="cadastro.html"><img src="assets/imgs/cadastrar.png"  alt=""></a>
                     <span class="textos">Cadastro</span>
                 </div>
             </div>
@@ -32,18 +33,20 @@
 
                     <div id="ipt1" class="iptIndividual">
                         <label for="ipt_email" class="titulos">E-mail</label>
-                        <input type="text" class="ipts" id="ipt_email" placeholder="Email">
+                        <input type="text" class="ipts" id="ipt_email" placeholder="Email" autocomplete="off">
                     </div>
 
                     <div id="ipt2" class="iptIndividual">
                         <label for="ipt_senha" class="titulos">Senha</label>
-                        <input type="text" class="ipts" id="ipt_senha" placeholder="Senha">
+                        <input type="password" class="ipts" id="ipt_senha" placeholder="Senha" autocomplete="off">
                     </div>
 
                     
                     <button class="btn" onclick="entrar()"> Entrar</button>
 
                 </div>
+
+                <div class="feedback titulos"> <span id="spanFeedback">Preencha todos os campos</span></div>
 
             </div>
         </div>
@@ -58,13 +61,6 @@
         
         var emailVar = ipt_email.value;
         var senhaVar = ipt_senha.value;
-
-        if (emailVar == "" || senhaVar == "") {  
-           alert ("(Mensagem de erro para todos os campos em branco)");
-        }
-        else {
-            //setInterval(sumirMensagem, 5000)
-        }
 
         console.log("FORM LOGIN: ", emailVar);
         console.log("FORM SENHA: ", senhaVar);
@@ -91,7 +87,7 @@
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
 
-                    alert(`Login efetuado com sucesso`)
+                    spanFeedback.innerHTML=`<span style='color:green'>Login efetuado com sucesso</span>, redirecionando para Dashboard`
                     setTimeout(function () {
                         window.location.href = "dashboard/metricas.html";
                     }, 1000); // apenas para exibir o loading
@@ -104,7 +100,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                    alert('Email e/ou senha invalidos')
+                    spanFeedback.innerHTML=`<span style='color:red'> Email e/ou senha invalidos</span>`
                 });
             }
 
