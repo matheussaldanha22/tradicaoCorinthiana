@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tradição | Geral</title>
+
+
+    <link rel="stylesheet" href="../styles/dashboards.css">
+    <link rel="stylesheet" href="../styles/estilo.css" />
+    <link rel="stylesheet" href="../styles/styleInst.css" />
+
+    <script src="../scripts/sessao.js"></script>
+    <script src="../scripts/alerta.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+
+    <div class="janela">
+
+        <div class="header-left dash-header">
+
+            <h1 class="titulos">Tradição</h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav">
+                <h3>Quiz</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./dashboard.html">
+                    <h3>Gráficos</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Mural de Avisos</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+
+        </div>
+
+        <div class="dash">
+            <div class="titulos">
+                <span>Quiz Fiel</span>
+            </div>
+            <div class="main">
+                <div class="container" id="quiz-container">
+                    <div class="questao" id="questao">Pergunta vai aqui</div>
+                    <div class="opcao" onclick="selecionarOpcao(0)">Alternativa 1</div>
+                    <div class="opcao" onclick="selecionarOpcao(1)">Alternativa 2</div>
+                    <div class="opcao" onclick="selecionarOpcao(2)">Alternativa 3</div>
+                    <div class="opcao" onclick="selecionarOpcao(3)">Alternativa 4</div>
+                    <button class="btn" onclick="confirmarResposta()">Confirmar</button>
+                </div>
+                <div id="resultado" style="display: none; font-size: 24px; font-weight: bold; color: green;"></div>
+
+            </div>
+
+    </div>
+
+</body>
+
+<script>
+        const listaQuestoes = [
+            { questao: "Em que ano o Corinthians foi fundado?", opcoes: ["1910", "1920", "1930", "1940"], respostaCorreta: 0 },
+            { questao: "Qual é o estádio do Corinthians?", opcoes: ["Morumbi", "Maracanã", "Neo Química Arena", "Pacaembu"], respostaCorreta: 2 },
+            { questao: "Qual é o mascote do Corinthians?", opcoes: ["Urubu", "Gavião", "Leão", "Tigre"], respostaCorreta: 1 },
+            { questao: "Em qual cidade o Corinthians foi fundado?", opcoes: ["Rio de Janeiro", "Campinas", "Santos", "São Paulo"], respostaCorreta: 3 },
+            { questao: "Quem foi o primeiro ídolo do Corinthians?", opcoes: ["Pelé", "Sócrates", "Neco", "Rivelino"], respostaCorreta: 2 },
+            { questao: "Quantos títulos da Libertadores o Corinthians possui?", opcoes: ["0", "1", "2", "3"], respostaCorreta: 1 },
+            { questao: "Em que ano o Corinthians conquistou seu primeiro Mundial de Clubes?", opcoes: ["2000", "2012", "2015", "1999"], respostaCorreta: 0 },
+            { questao: "Qual é o maior rival do Corinthians?", opcoes: ["São Paulo", "Palmeiras", "Santos", "Flamengo"], respostaCorreta: 1 },
+            { questao: "Qual é a cor tradicional do uniforme do Corinthians?", opcoes: ["Verde", "Vermelho", "Preto e Branco", "Azul"], respostaCorreta: 2 },
+            { questao: "Qual jogador é conhecido como Doutor e ídolo do Corinthians?", opcoes: ["Sócrates", "Pelé", "Garrincha", "Zico"], respostaCorreta: 0 },
+            { questao: "Em que ano o Corinthians foi campeão invicto da Libertadores?", opcoes: ["2000", "2012", "2010", "1999"], respostaCorreta: 1 },
+            { questao: "Quem foi o treinador do Corinthians na conquista da Libertadores de 2012?", opcoes: ["Tite", "Luxemburgo", "Muricy", "Felipão"], respostaCorreta: 0 },
+            { questao: "Qual destes jogadores nunca jogou no Corinthians?", opcoes: ["Neto", "Tevez", "Romário", "Ronaldo"], respostaCorreta: 2 },
+            { questao: "Quantas vezes o Corinthians foi campeão brasileiro até 2023?", opcoes: ["5", "7", "6", "8"], respostaCorreta: 3 },
+            { questao: "Qual jogador argentino marcou história com a camisa 10 do Corinthians?", opcoes: ["Maradona", "Tevez", "Verón", "Sorín"], respostaCorreta: 1 }
+        ];
+
+        let questaoAtual = 0;
+        let qtdAcertos = 0;
+        let selectedOpcao = null;
+
+        function attQuestoes() {
+            document.getElementById("questao").innerText = listaQuestoes[questaoAtual].questao;
+            const opcoes = document.querySelectorAll(".opcao");
+            opcoes.forEach((opcao, index) => {
+                opcao.innerText = listaQuestoes[questaoAtual].opcoes[index];
+                opcao.classList.remove("selected");
+            });
+            selectedOpcao = null;
+        }
+
+        function selecionarOpcao(index) {
+            const opcoes = document.querySelectorAll(".opcao");
+            opcoes.forEach(opcao => opcao.classList.remove("selected"));
+            opcoes[index].classList.add("selected");
+            selectedOpcao = index;
+        }
+
+        function confirmarResposta() {
+            if (selectedOpcao === null) {
+                alert("Escolha uma opção antes de confirmar!");
+                return;
+            }
+            if (selectedOpcao === listaQuestoes[questaoAtual].respostaCorreta) {
+                qtdAcertos++;
+            }
+            questaoAtual++;
+            if (questaoAtual < listaQuestoes.length) {
+                attQuestoes();
+            } else {
+                exibirResultado();
+            }
+        }
+
+        function exibirResultado() {
+            document.getElementById("quiz-container").style.display = "none";
+            document.getElementById("resultado").innerText = `Você acertou ${qtdAcertos} de ${listaQuestoes.length} perguntas!`;
+            document.getElementById("resultado").style.display = "block";
+        }
+
+        attQuestoes();
+
+
+
+         // function exibirAquarios() {
+    //     JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
+    //         document.getElementById("cardAquarios").innerHTML += `
+    //                 <div class="card-aquario">
+    //                     <div class="title-aquario">
+    //                         <h1>${item.descricao}</h1>
+    //                     </div>
+    //                     <div class="desc-aquario">
+    //                     <div class="temperatura">
+    //                         <p id="temp_aquario_${item.id}">-°C</p>
+    //                     </div>
+    //                     <div class="cor-alerta" id="card_${item.id}"></div>
+    //                 </div>
+    //                 </div>
+    //                 `
+    //     });
+    // }
+    </script>
+
+   
+
+
+
+</html>

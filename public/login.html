@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Tradição</title>
     <link rel="icon" href="https://assets.coingecko.com/coins/images/17998/large/XMRckIDaOnwFhFWEkrOHxrV1JhkI1JM5X4Y6LI5v.png?1696517515">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/styleInst.css">
     <link rel="stylesheet" href="styles/styleCadastro.css">
 </head>
 <body>
@@ -42,15 +42,78 @@
                     </div>
 
                     
-                    <button class="btn"> Cadastrar</button>
+                    <button class="btn" onclick="entrar()"> Entrar</button>
 
                 </div>
 
             </div>
         </div>
-        <div class="resultado"> </div>
     </div>
 </body>
 </html>
 
 <script src="scripts/scriptCadastro.js"></script>
+
+<script>
+     function entrar() {
+        
+        var emailVar = ipt_email.value;
+        var senhaVar = ipt_senha.value;
+
+        if (emailVar == "" || senhaVar == "") {  
+           alert ("(Mensagem de erro para todos os campos em branco)");
+        }
+        else {
+            //setInterval(sumirMensagem, 5000)
+        }
+
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+
+            if (resposta.ok) {
+                console.log(resposta);
+
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    alert(`Login efetuado com sucesso`)
+                    setTimeout(function () {
+                        window.location.href = "dashboard/dashboard.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    alert('Email e/ou senha invalidos')
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
+    }
+
+</script>

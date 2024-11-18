@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro Tradição</title>
     <link rel="icon" href="https://assets.coingecko.com/coins/images/17998/large/XMRckIDaOnwFhFWEkrOHxrV1JhkI1JM5X4Y6LI5v.png?1696517515">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/styleInst.css">
     <link rel="stylesheet" href="styles/styleCadastro.css">
 </head>
 <body>
@@ -32,35 +32,35 @@
                 <div class="div_inputs">
                     <div id="ipt1" class="iptIndividual">
                         <label for="ipt_nome" class="titulos">Nome</label>
-                        <input type="text" class="ipts" id="ipt_nome" placeholder="Nome">
+                        <input type="text" class="ipts" id="ipt_nome" placeholder="Nome" oninput="validarNome()">
                         <span id="alertNome" class="red"></span>
                     </div>
 
                     <div id="ipt2" class="iptIndividual">
                         <label for="ipt_email" class="titulos">E-mail</label>
-                        <input type="text" class="ipts" id="ipt_email" placeholder="Email">
+                        <input type="text" class="ipts" id="ipt_email" placeholder="Email" oninput="validarEmail()">
                         <span id="alertEmail" class="red"></span>
                     </div>
 
                     <div id="ipt3" class="iptIndividual">
                         <label for="ipt_senha" class="titulos">Senha</label>
-                        <input type="text" class="ipts" id="ipt_senha" placeholder="Senha">
+                        <input type="text" class="ipts" id="ipt_senha" placeholder="Senha" oninput="validarSenha()">
                         <span id="alertSenha" class="red"></span>
                     </div>
 
                     <div id="ipt4" class="iptIndividual">
                         <label for="ipt_confirmSenha" class="titulos">Confirmar Senha</label>
-                        <input type="text" class="ipts" id="ipt_confirmSenha" placeholder="Confirmar senha">
+                        <input type="text" class="ipts" id="ipt_confirmSenha" placeholder="Confirmar senha" oninput="validarSenha()">
                         <span id="alertConfirmSenha" class="red"></span>
                     </div>
                     
                     
-                    <button class="btn" onclick="checar()"> Cadastrar</button>
+                    <button class="btn" onclick="cadastrar()"> Cadastrar</button>
                 </div>
 
             </div>
         </div>
-        <div class="resultado"> </div>
+        
     </div>
 </body>
 </html>
