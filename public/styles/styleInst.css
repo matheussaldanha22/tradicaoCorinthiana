@@ -491,6 +491,7 @@ nav {
 #sobrePage .descricao {
     text-align: justify;
     padding: 20px;
+    font-size: 15px;
 }
 
 #sobrePage img {
@@ -505,6 +506,7 @@ nav {
     justify-content: center;
     border-radius: 10px;
 }
+
 
 
 

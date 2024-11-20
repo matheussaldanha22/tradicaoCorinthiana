@@ -174,6 +174,8 @@
     }
 
     function atualizarFeed() {
+        var nomeUsuario = sessionStorage.NOME_USUARIO;
+
         fetch("/historia/listar").then(function (resposta) {
             if (resposta.ok) {
                 if (resposta.status == 204) {
@@ -231,8 +233,14 @@
                         divPublicacao.appendChild(spanTitulo);
                         divPublicacao.appendChild(divDescricao);
                         divPublicacao.appendChild(divButtons);
-                        divButtons.appendChild(btnEditar);
-                        divButtons.appendChild(btnDeletar);
+                        
+                        if(nomeUsuario == publicacao.nome){
+                            divButtons.appendChild(btnEditar);
+                            divButtons.appendChild(btnDeletar);
+
+                            spanNome.innerHTML += '(Você)'
+                        }
+
                         feed.appendChild(divPublicacao);
                     }
 
