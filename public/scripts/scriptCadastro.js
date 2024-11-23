@@ -61,15 +61,12 @@ function validarSenha(){
 }
 
 function cadastrar() {
-  // aguardar();
-
-  //Recupere o valor da nova input pelo nome do id
-  // Agora vá para o método fetch logo abaixo
   var nomeVar = ipt_nome.value;
   var emailVar = ipt_email.value;
   var senhaVar = ipt_senha.value;
   var confirmacaoSenhaVar = ipt_confirmSenha.value;
   var cadastroValido = nomeValido && emailValido && senhaValido && confirmSenhaValido
+
   // Verificando se há algum campo em branco
   if (
     nomeVar == "" ||
@@ -77,7 +74,7 @@ function cadastrar() {
     senhaVar == "" ||
     confirmacaoSenhaVar == ""
   ) {
-    alert ("Preencha todos os campos");
+    return;
     
   }else if(cadastroValido == true){
       // Enviando o valor da nova input
@@ -94,8 +91,8 @@ function cadastrar() {
           senhaServer: senhaVar
         }),
     })
-    
-    alert('Cadastro realizado, redirecionando para login..')
+    resultadoCadastro.style.textAlign = 'left'
+    resultadoCadastro.innerHTML = `<span style='color:blue'>Cadastro realizado!</span> Redirecionando para login..`
     setTimeout(function () {
                     
                         window.location.href = "login.html";

@@ -58,7 +58,7 @@
     border-radius: 10px;
     margin-top: 10vh;
     margin-left: 10vh;
-    height: 80vh;
+    height: 85vh;
     width: 35vw;
     box-shadow: 15px 10px rgba(0, 0, 0, 0.5);  
     background-color:rgba(255, 255, 255, 0.822);
@@ -127,16 +127,22 @@
     height: 40px;
 }
 
+.red{
+    font-weight: 600;
+}
+
 .div_inputs .btn:hover{
     transform: scale(1.05);
     background-color: rgb(56, 55, 55);
 }
 
 .resultado{
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    margin-top: 10vh;
-    margin-left: 5vh;
-    height: 20vh;
-    width: 40vh;
+    text-align: center;
+    margin-top: vh;
+}
+
+.resultado .textos{
+    font-size: 13px;
+    text-shadow: none;
+    font-weight: 800;
 }

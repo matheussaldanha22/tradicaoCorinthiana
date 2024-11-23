@@ -2,15 +2,16 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://assets.coingecko.com/coins/images/17998/large/XMRckIDaOnwFhFWEkrOHxrV1JhkI1JM5X4Y6LI5v.png?1696517515" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Página Inicial</title>
+    <title>Editar história</title>
 
     
     <link rel="stylesheet" href="../styles/dashboards.css">
     <link rel="stylesheet" href="../styles/estilo.css" />
+    <link rel="stylesheet" href="../styles/styleInst.css" />
     <script src="../scripts/sessao.js"></script>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,7 +28,7 @@
 
         <div class="header-left">
 
-            <h1>AquaTech</h1>
+            <h1 class="titulos">Tradição</h1>
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -61,7 +62,7 @@
 
             <div class="avisos">
                 <div class="container">
-                    <h1>Editar um aviso</h1>
+                    <h1>Edite sua história</h1>
                     <div class="div-form">
                         <label>
                             ID:
@@ -87,7 +88,10 @@
                             <textarea id="textarea_descricao" maxlength="250" rows="5"></textarea>
                         </label>
                         <br>
+                        <div class="btns">
                         <button onclick="editar()">Editar</button>
+                        <button onclick="window.location.href = '/dashboard/mural.html'">Cancelar</button>
+                        </div>
                     </div>
 
                 </div>
@@ -115,7 +119,7 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.alert("Post atualizado com sucesso " + sessionStorage.getItem("NOME_USUARIO") + "!");
                 window.location = "/dashboard/mural.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");

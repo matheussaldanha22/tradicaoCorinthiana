@@ -2,11 +2,11 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="https://assets.coingecko.com/coins/images/17998/large/XMRckIDaOnwFhFWEkrOHxrV1JhkI1JM5X4Y6LI5v.png?1696517515" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TRADIÇÃO | Historias</title>
+    <title>Tradição | Historias</title>
 
     <link rel="stylesheet" href="../styles/dashboards.css">
     <link rel="stylesheet" href="../styles/estilo.css" />
@@ -125,7 +125,7 @@
             console.log("resposta: ", resposta);
 
             if (resposta.ok) {
-                window.alert("Post realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.alert("Seu post realizado com sucesso " + sessionStorage.getItem("NOME_USUARIO") + "!");
                 window.location = "/dashboard/mural.html";
                 limparFormulario();
                 finalizarAguardar();
@@ -146,7 +146,7 @@
     function editar(idhistoria) {
         sessionStorage.ID_POSTAGEM_EDITANDO = idhistoria;
         console.log("cliquei em editar - " + idhistoria);
-        window.alert("Você será redirecionado à página de edição do historia de id número: " + idhistoria);
+        //window.alert("Você será redirecionado à página de edição do historia de id número: " + idhistoria);
         window.location = "/dashboard/edicao-historia.html"
 
     }
@@ -161,7 +161,7 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.alert("Seu post  foi deletado com sucesso  " + sessionStorage.getItem("NOME_USUARIO") + "!");
                 window.location = "/dashboard/mural.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");

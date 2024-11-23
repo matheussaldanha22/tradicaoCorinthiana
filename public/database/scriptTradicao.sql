@@ -35,15 +35,8 @@ select * from historia;
         (select count(qtdPontos) as '11 a 14' from quiz where qtdPontos > 11 and qtdPontos <=14) as 11_a_14,
         (select count(qtdPontos) as '15' from quiz where qtdPontos = 15) as 15pts from quiz limit 1;
         
--- select mostra pontuações do usuario
-SELECT usuario.nome,quiz.qtdPontos,quiz.dtRealizacao from quiz 
-JOIN usuario ON idUsuario = fk_usuario
-WHERE fk_usuario = 5; -- igual ao idUsuario do session storage
-
-SELECT usuario.nome, MAX(quiz.qtdPontos) AS MaiorPontuacao FROM quiz
-JOIN usuario ON idUsuario = fk_usuario 
-WHERE fk_usuario = 5 -- igual ao idUsuario do session storage
-GROUP BY usuario.nome;
+-- select para fazer a media dos pontos gerais
+select truncate(avg(qtdPontos),0) AS MediaPontuacao from quiz;
 
 
 
