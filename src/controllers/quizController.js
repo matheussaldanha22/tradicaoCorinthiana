@@ -1,10 +1,9 @@
 var quizModel = require("../models/quizModel");
 
-function listarPontos(req, res) {
-
-  quizModel.listarPontos().then((resultadoListarPontos) => {
-    if (resultadoListarPontos.length > 0) {
-      res.status(200).json(resultadoListarPontos);
+function listarMediaPont(req, res) {
+  quizModel.listarMediaPont().then((resultadolistarMediaPont) => {
+    if (resultadolistarMediaPont.length > 0) {
+      res.status(200).json(resultadolistarMediaPont);
     } else {
         res.status(204).send("Nenhum resultado encontrado!")
     }
@@ -40,6 +39,6 @@ function cadastrarPontos(req, res) {
 }
 
 module.exports = {
-  listarPontos,
+  listarMediaPont,
   cadastrarPontos
 };

@@ -81,7 +81,7 @@
                     </div>
 
                     <div class="kpiIndividual">
-                        <span class="tituloKpi textos">Pontuação geral média</span>
+                        <span class="tituloKpi textos">Média de acertos dos jogadores</span>
                         <span class="numKpi textos" id="mediaPontuacao">00</span>
                     </div>
                 </div>
@@ -136,6 +136,25 @@
     //     Para ajustar o "select", ajuste o comando sql em src/models
 
 
+       // Obtém o ID do usuário da sessão
+    const idUsuarioSessao = sessionStorage.getItem('ID_USUARIO');
+    if (idUsuarioSessao) {
+      // Faz uma requisição para obter a pontuação mais recente do usuário
+      fetch(`/quiz/listarMediaPont`)
+        .then(response => response.json())
+        .then(data => {
+          const ultimaPontuacao = data[0]["MediaPontuacao"];
+          document.getElementById('mediaPontuacao').textContent = Math.floor(parseFloat(ultimaPontuacao));
+        })
+        .catch(error => {
+          console.error('Erro ao obter pontuação:', error);
+        });
+    } else {
+      console.error('ID do usuário não encontrado na sessão.');
+    }
+
+
+    //funcao responsavel por buscar a pontuação no banco de dados
     function buscarPontuacao() {
       fetch(`/metricas/buscarPontuacao`, { cache: 'no-store' })
         .then(response => {
@@ -195,6 +214,8 @@
 
       // Acessando o único objeto na primeira posição do array
       const registro = resposta[0];
+
+      //setando valores de acordo com o registro
       dados.datasets[0].data.push(registro.ate_5);
       dados.datasets[1].data.push(registro.de5_a_11);
       dados.datasets[2].data.push(registro.de11_a_14);
