@@ -326,7 +326,14 @@ body {
   border: 1px solid #333;
   border-radius: 5px;
   cursor: pointer;
+  transition: all 0.3s;
 }
+
+.opcao:hover{
+  transform: scale(1.02);
+  transition: all 0.3s;
+}
+
 .opcao.selected {
   background-color: #FF1109;
   color: white;
@@ -430,7 +437,6 @@ body {
 
 .chartIdv{
   width: 40vw;
-  border:outset 5px black;
   margin-top: 3vh;
   background-color: rgb(255, 255, 255);
   border-radius: 10px;

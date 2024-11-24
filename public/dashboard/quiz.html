@@ -61,7 +61,7 @@
             </div>
             <div class="main">
                 <div class="container" id="quiz-container">
-                    <div class="questao" id="questao">Pergunta vai aqui</div>
+                    <div class="questao" id="questao">Pergunta X</div>
                     <div class="opcao" onclick="selecionarOpcao(0)">Alternativa 1</div>
                     <div class="opcao" onclick="selecionarOpcao(1)">Alternativa 2</div>
                     <div class="opcao" onclick="selecionarOpcao(2)">Alternativa 3</div>
@@ -79,7 +79,9 @@
 <script>
         b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-        const listaQuestoes = [
+        //array lista de questao com diversos objetos dentro 
+        //dentro do objeto existe tambem arrays, opcoes e a resposta correta
+        const listaQuestoes = [                                
             { questao: "Em que ano o Corinthians foi fundado?", opcoes: ["1910", "1920", "1930", "1940"], respostaCorreta: 0 },
             { questao: "Qual é o estádio do Corinthians?", opcoes: ["Morumbi", "Maracanã", "Neo Química Arena", "Pacaembu"], respostaCorreta: 2 },
             { questao: "Qual é o mascote do Corinthians?", opcoes: ["Urubu", "Gavião", "Leão", "Tigre"], respostaCorreta: 1 },
@@ -99,33 +101,45 @@
 
         let questaoAtual = 0;
         let qtdAcertos = 0;
-        let qtdPontos = 0;
         let selectedOpcao = null;
         tituloQuiz.innerHTML = `Quiz Timão ${questaoAtual+1}/${listaQuestoes.length}`
 
+        //funcao para atualizar as questoes
         function attQuestoes() {
+
+            //troca da pergunta de acordo com a questao atual, variavel
             document.getElementById("questao").innerText = listaQuestoes[questaoAtual].questao;
+
+            //capta todos as opcoes do HTML
             const opcoes = document.querySelectorAll(".opcao");
-            opcoes.forEach((opcao, index) => {
-                opcao.innerText = listaQuestoes[questaoAtual].opcoes[index];
-                opcao.classList.remove("selected");
+
+            //percorre todos itens do array opcoes e troca de acordo com a questao atual
+            opcoes.forEach((opcao, i) => {
+                opcao.innerText = listaQuestoes[questaoAtual].opcoes[i];
+                opcao.classList.remove("selected"); 
             });
-            selectedOpcao = null;
+
+            selectedOpcao = null; //a cada troca volta a opcao selecionada para nula
         }
 
-        function selecionarOpcao(index) {
+        //funcao identifica opcao selecionada e coloca classe para estilização
+        function selecionarOpcao(i) {
             const opcoes = document.querySelectorAll(".opcao");
+
             opcoes.forEach(opcao => opcao.classList.remove("selected"));
-            opcoes[index].classList.add("selected");
-            selectedOpcao = index;
+            opcoes[i].classList.add("selected");
+            selectedOpcao = i; //atribui a opção selecionada
         }
 
+        //funcao que confirma a resposta selecionada
         function confirmarResposta() {
             if (selectedOpcao === null) {
                 alert("Escolha uma opção antes de confirmar!");
                 return;
             }
-            if (selectedOpcao === listaQuestoes[questaoAtual].respostaCorreta) {
+
+            //checa se a opçao selecionada é igual a resposta correta da questao atual
+            if (selectedOpcao === listaQuestoes[questaoAtual].respostaCorreta) { 
                 qtdAcertos++;
             }
 
@@ -146,13 +160,14 @@
         function cadastrarPontos(pontos) {
         const idUsuario = sessionStorage.ID_USUARIO; 
         sessionStorage.Pontos = pontos //ARMAZENANDO QTD DE PTS DO USUARIO NA SessionStorage
-
+        
+        //requisicao cadastrar pontos
         fetch("/quiz/cadastrarPontos", {
         method: "POST",
         headers: {
         "Content-Type": "application/json",
         },
-        body: JSON.stringify({ pontos: pontos, idUsuario: idUsuario }),
+        body: JSON.stringify({ pontos: pontos, idUsuario: idUsuario }), //atribuindo valor ao json, pontos
         })
         .then((response) => response.json())
         .then((data) => {
@@ -162,6 +177,7 @@
         console.error("Erro ao cadastrar QtdAcertos:", error);
         });
     };
+
 
         function exibirResultado() {
             document.getElementById("quiz-container").style.display = "none"; //some com conteudo do quiz
@@ -193,6 +209,7 @@
             <button class="btn" onclick="window.location.reload()">Refazer quiz</button>`;
             document.getElementById("resultado").style.display = "block"; 
 
+            //cadastra a qtd de acertos, funcao
             cadastrarPontos(qtdAcertos)
             tituloQuiz.innerHTML = `Quiz Timão`
         }

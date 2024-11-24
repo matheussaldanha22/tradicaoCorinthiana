@@ -158,7 +158,7 @@
       fetch(`/quiz/listarMediaPont`) // Faz uma requisição na função para buscar a média de pontuação no quiz em geral
         .then(response => response.json())
         .then(data => {
-          const mediaGeral = data[0]["MediaPontuacao"];
+          const mediaGeral = data[0]["MediaPontuacao"]; //acessa o item MediaPontuacao dentro do json data na pos 0
           document.getElementById('mediaPontuacao').textContent = `${mediaGeral}/15`;
         })
         .catch(error => {
@@ -169,17 +169,17 @@
 
     //funcao responsavel por buscar a pontuação no banco de dados
     function buscarPontuacao() {
-      fetch(`/metricas/buscarPontuacao`, { cache: 'no-store' })
+      fetch(`/metricas/buscarPontuacao`, { cache: 'no-store' }) //faz a requisicao
         .then(response => {
           if (response.ok) {
-            return response.json();
+            return response.json(); //checa se foi respondida corrretamente se for ok, transforma em JSON
           } else {
             throw new Error('Nenhum dado encontrado ou erro na API');
           }
         })
         .then(resposta => {
           console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-          plotarGrafico(resposta);
+          plotarGrafico(resposta); //plota os graficos com os dados do json captado
         })
         .catch(error => {
           console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
@@ -195,9 +195,9 @@
       // Criando estrutura para plotar gráfico - dados
       let dados = {
         labels: labels,
-        datasets: [{
+        datasets: [{ //array de dados a serem setados
           label: 'Até 5',
-          data: [],
+          data: [], 
           backgroundColor: 'rgb(105,105,105)',
           borderColor: 'rgb(105,105,105)',
         },
@@ -225,11 +225,12 @@
       console.log('Estes dados foram recebidos pela função "buscarPontuacao" e passados para "plotarGrafico":');
       console.log(resposta);
 
-      // Acessando o único objeto na primeira posição do array
+      // Acessando o valor do objeto recebido da buscarPontuacao
       const registro = resposta[0];
+      console.log(registro)
 
-      //setando valores de acordo com o registro
-      dados.datasets[0].data.push(registro.ate_5);
+      //setando data em posicoes do array datasets de acordo com o objeto registro atraves dos aliases
+      dados.datasets[0].data.push(registro.ate_5); 
       dados.datasets[1].data.push(registro.de5_a_11);
       dados.datasets[2].data.push(registro.de11_a_14);
       dados.datasets[3].data.push(registro.ate_15);

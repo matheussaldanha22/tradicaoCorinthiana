@@ -12,7 +12,7 @@ CREATE TABLE usuario(
 CREATE TABLE historia(
 	idhistoria int primary key auto_increment,
     titulo varchar(100),
-    descrircao varchar(255),
+    descricao varchar(255),
     fk_usuario int,
     constraint fkUserHistoria foreign key (fk_usuario) references usuario(idUsuario)
 );
@@ -23,6 +23,14 @@ CREATE table quiz(
     constraint fkUserQuiz foreign key (fk_usuario) references usuario(idUsuario),
     dtRealizacao TIMESTAMP DEFAULT current_timestamp
 );
+
+-- inserts genericos quiz 
+INSERT INTO quiz VALUES
+(1,1,default),
+(1,1,default),
+(7,1,default),
+(12,1,default),
+(5,1,default);
 
 select * from quiz;
 select * from usuario;
