@@ -113,7 +113,7 @@
             //capta todos as opcoes do HTML
             const opcoes = document.querySelectorAll(".opcao");
 
-            //percorre todos itens do array opcoes e troca de acordo com a questao atual
+            //percorre todos itens do array opcoes e troca de acordo com a questao atual e remove a classe do selected
             opcoes.forEach((opcao, i) => {
                 opcao.innerText = listaQuestoes[questaoAtual].opcoes[i];
                 opcao.classList.remove("selected"); 
@@ -126,7 +126,8 @@
         function selecionarOpcao(i) {
             const opcoes = document.querySelectorAll(".opcao");
 
-            opcoes.forEach(opcao => opcao.classList.remove("selected"));
+            opcoes.forEach(opcao => opcao.classList.remove("selected")); //percorre as opcoes no html e remove caso outra seja selecionada
+
             opcoes[i].classList.add("selected");
             selectedOpcao = i; //atribui a opção selecionada
         }
@@ -161,7 +162,7 @@
         const idUsuario = sessionStorage.ID_USUARIO; 
         sessionStorage.Pontos = pontos //ARMAZENANDO QTD DE PTS DO USUARIO NA SessionStorage
         
-        //requisicao cadastrar pontos
+        //envia o cadastrar pontos
         fetch("/quiz/cadastrarPontos", {
         method: "POST",
         headers: {
@@ -187,26 +188,27 @@
             let imgSrc = ''
 
             if(qtdAcertos <=5){
-                msg = 'Foi muito mal, Nível: Pedro Raul!'
+                msg = 'Foi bem mal, Jogador: Pedro Raul!'
                 imgSrc='../assets/imgs/pedroRaul.jpg'
             }else if(qtdAcertos <= 8){
-                msg = 'Foi razoável, Nível: Carrillo!'
+                msg = 'Foi razoável, Jogador: Carrillo!'
                 imgSrc='../assets/imgs/carrillo.jpg'
             }else if(qtdAcertos <= 11){
-                msg = 'Foi muito bem, Nível: Romero!'
+                msg = 'Foi muito bem, Jogador: Romero!'
                 imgSrc='../assets/imgs/romero.jpg'
             }else if(qtdAcertos <= 14){
-                msg = 'Amassou!, Nível: Yuri Alberto!'
+                msg = 'Amassou!, Jogador: Yuri Alberto!'
                 imgSrc='../assets/imgs/yuri.jpg'
             }else if(qtdAcertos == 15){
-                msg = 'É o melhor de todos!, Nível: Garroo!'
+                msg = 'É o melhor de todos!, Jogador: Garroo!'
                 imgSrc='../assets/imgs/garro.webp'
             }
 
             document.getElementById("resultado").innerHTML = `Você acertou ${qtdAcertos} de ${listaQuestoes.length} perguntas!<br>
-            <img src= "${imgSrc}"><br>
-            ${msg}<br>
-            <button class="btn" onclick="window.location.reload()">Refazer quiz</button>`;
+                                                             <img src= "${imgSrc}"><br>
+                                                             ${msg}<br>
+                                                            <button class="btn" onclick="window.location.reload()">Refazer quiz</button>`;
+
             document.getElementById("resultado").style.display = "block"; 
 
             //cadastra a qtd de acertos, funcao
